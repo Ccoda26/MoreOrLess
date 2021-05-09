@@ -13,26 +13,34 @@ namespace MoreorLess
 
             int rand_numb = Rand.Next(max);
 
-            //Console.WriteLine(rand_numb);
 
             while (myValeur != rand_numb)
             {
                 Console.WriteLine("entré un chiffre compris entre 0 et 100: ");
 
-                myValeur = Int32.Parse(Console.ReadLine());
-
-                if (myValeur < rand_numb)
+                string myInput = Console.ReadLine();
+                int.TryParse(myInput, out myValeur);
+                if (int.TryParse(myInput, out myValeur))
                 {
-                    Console.WriteLine(myValeur + " est plus petit que le nombre a trouvé");
-                }
-                else if (myValeur > rand_numb)
-                {
-                    Console.WriteLine(myValeur + " est plus grand que le nombre a trouvé");
+                    if (myValeur < rand_numb)
+                    {
+                        Console.WriteLine(myValeur + " est plus petit que le nombre a trouvé");
+                    }
+                    else if (myValeur > rand_numb)
+                    {
+                        Console.WriteLine(myValeur + " est plus grand que le nombre a trouvé");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Félicitation tu as trouvé le bon numéro, le nombre mystère était : {0}", rand_numb);
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Félicitation tu as trouvé le bon numéro, le nombre mystère était : {0}", rand_numb);
+                    Console.WriteLine("Veuillez entré une valeur comprise entre 0 et 100 en respectant le format numbre");
+
                 }
+
             }
 
 
